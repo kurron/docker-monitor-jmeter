@@ -1,13 +1,21 @@
-# Pre-built JDK 8 image
+#Pre-built JDK 8 image
 FROM kurron/docker-oracle-jdk-8:latest
 
 MAINTAINER Ron Kurr <kurr@jvmguy.com>
 
-# copy the application jar file from the build output directory into the image
-ADD https://bintray.com/artifact/download/kurron/maven/org/kurron/example/monitor-api-gateway/1.5.0.RELEASE/monitor-api-gateway-1.5.0.RELEASE.jar /opt/example/application.jar
+RUN mkdir /opt/example
+RUN mkdir /config
 
-# expose the port that the application will be listening on
-EXPOSE 8000
+VOLUME /config
 
-ENTRYPOINT ["java", "-jar", "/opt/example/application.jar"]
+ADD http://mirrors.ibiblio.org/apache/jmeter/binaries/apache-jmeter-2.13.tgz /opt/example/jmeter.tgz
+
+WORKDIR /opt/example
+RUN tar zxvf /opt/example/jmeter.tgz
+
+ADD configuration.jmx /config/configuration.jmx
+
+WORKDIR /opt/example/apache-jmeter-2.13
+
+ENTRYPOINT ["bin/jmeter", "-n", "-t", "/config/configuration.jmx"]
 

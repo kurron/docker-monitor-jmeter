@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker stop api-gateway 
-docker rm api-gateway 
+docker stop monitor-jmeter 
+docker rm monitor-jmeter 
