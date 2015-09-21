@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker inspect kurron/monitor-jmeter 
+docker inspect monitor-jmeter 

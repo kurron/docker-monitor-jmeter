@@ -5,7 +5,7 @@ jmeter-config:
       - /configuration 
 
 jmeter:
-  image: kurron/monitor-jmeter 
+  image: kurron/docker-monitor-jmeter 
   container_name: monitor-jmeter
   hostname: jmeter
 # volumes_from:
