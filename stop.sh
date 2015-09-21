@@ -1,4 +1,5 @@
 #!/bin/bash
 
-docker stop monitor-jmeter 
-docker rm monitor-jmeter 
+docker-compose stop
+#docker stop monitor-jmeter 
+#docker rm monitor-jmeter 

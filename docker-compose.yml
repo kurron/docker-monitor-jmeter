@@ -1,0 +1,15 @@
+jmeter-config:
+  image: busybox
+  container_name: jmeter-config 
+  volumes:
+      - /configuration 
+
+jmeter:
+  image: kurron/monitor-jmeter 
+  container_name: monitor-jmeter
+  hostname: jmeter
+# volumes_from:
+#     - jmeter-config 
+  restart: always
+  net: host
+
